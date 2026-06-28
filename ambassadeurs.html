@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ambassadeurs — Candy Fruit Casablanca</title>
+<link rel="stylesheet" href="css/style.css">
+<style>
+.page-hero{min-height:340px;background:linear-gradient(160deg,#0f2218,#2c5f3a);display:flex;align-items:flex-end;position:relative;overflow:hidden;}
+.ph-bg{position:absolute;inset:0;background:radial-gradient(ellipse at 80% 50%,rgba(184,137,42,0.1) 0%,transparent 60%);}
+.ph-content{position:relative;z-index:2;padding:5rem 0 3rem;}
+
+/* ZELAL HERO */
+.zelal-section{background:var(--dark2);padding:7rem 0;}
+.zelal-grid{display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center;}
+.zelal-visual{position:relative;}
+.zelal-avatar{
+  width:100%;aspect-ratio:3/4;border-radius:16px;
+  background:linear-gradient(160deg,#6a1010,#a90404);
+  display:flex;align-items:center;justify-content:center;
+  font-size:120px;position:relative;overflow:hidden;
+}
+.zelal-avatar::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(to top,rgba(0,0,0,0.6) 0%,transparent 50%);
+}
+.zelal-stats-float{
+  position:absolute;bottom:-20px;right:-20px;
+  background:#fff;border-radius:12px;padding:1.25rem 1.5rem;
+  box-shadow:0 12px 40px rgba(0,0,0,0.15);
+  display:flex;flex-direction:column;gap:8px;min-width:180px;
+}
+.zsf-item{display:flex;justify-content:space-between;align-items:center;font-size:13px;}
+.zsf-label{color:var(--muted);font-weight:300;}
+.zsf-val{font-weight:600;color:var(--dark);}
+.zelal-badge{
+  position:absolute;top:1.5rem;left:1.5rem;z-index:2;
+  background:var(--gold);color:#fff;
+  font-size:10px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;
+  padding:6px 14px;border-radius:20px;
+}
+.zelal-content .sec-title{color:#fff;}
+.zelal-content .sec-title em{color:var(--gold2);}
+.zelal-desc{color:rgba(255,255,255,0.6);font-size:15px;font-weight:300;line-height:1.85;margin-bottom:2rem;}
+.zelal-quote{
+  border-left:3px solid var(--gold2);padding-left:1.5rem;margin:2rem 0;
+  font-family:'Cormorant Garamond',serif;font-size:22px;color:rgba(255,255,255,0.85);
+  font-style:italic;line-height:1.5;
+}
+.zelal-actions{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:2.5rem;}
+.za-card{
+  background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);
+  border-radius:10px;padding:1.25rem;
+}
+.za-num{font-family:'Cormorant Garamond',serif;font-size:30px;color:var(--gold2);font-weight:600;line-height:1;}
+.za-title{font-size:13px;font-weight:500;color:#fff;margin:6px 0;}
+.za-desc{font-size:11px;color:rgba(255,255,255,0.45);line-height:1.6;font-weight:300;}
+
+/* INSIGHT BOX */
+.insight-box{
+  background:rgba(184,137,42,0.1);border:1px solid rgba(184,137,42,0.25);
+  border-radius:10px;padding:1.5rem;display:flex;align-items:flex-start;gap:1rem;margin-top:2rem;
+}
+.insight-box .ib-icon{font-size:22px;flex-shrink:0;}
+.ib-title{font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold2);margin-bottom:5px;}
+.ib-desc{font-size:13px;color:rgba(255,255,255,0.55);line-height:1.65;font-weight:300;}
+
+/* INFLUENCERS */
+.influencers-section{background:var(--cream);padding:7rem 0;}
+.inf-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem;}
+.inf-card{
+  background:#fff;border-radius:16px;overflow:hidden;
+  border:1px solid var(--border);transition:var(--transition);
+}
+.inf-card:hover{transform:translateY(-5px);box-shadow:var(--shadow-lg);}
+.inf-visual{
+  height:200px;display:flex;align-items:center;justify-content:center;
+  font-size:64px;position:relative;
+}
+.inf-type{
+  position:absolute;top:1rem;right:1rem;
+  background:rgba(0,0,0,0.6);color:#fff;
+  font-size:10px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;
+  padding:4px 12px;border-radius:20px;
+}
+.inf-body{padding:1.5rem;}
+.inf-name{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;color:var(--dark);margin-bottom:4px;}
+.inf-role{font-size:12px;color:var(--muted);font-weight:300;margin-bottom:1rem;}
+.inf-stats{display:flex;gap:1rem;margin-bottom:1rem;}
+.inf-stat .n{font-family:'Cormorant Garamond',serif;font-size:20px;color:var(--green);font-weight:600;}
+.inf-stat .l{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:0.08em;}
+.inf-tags{display:flex;gap:6px;flex-wrap:wrap;}
+.inf-tag{font-size:11px;background:var(--green3);color:var(--green2);padding:4px 10px;border-radius:20px;font-weight:500;}
+
+/* IMPACT */
+.impact-section{background:var(--green);padding:7rem 0;}
+.impact-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;margin-top:3rem;}
+.impact-card{
+  background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.1);
+  border-radius:12px;padding:2rem;text-align:center;
+}
+.ic-num{font-family:'Cormorant Garamond',serif;font-size:44px;color:#fff;font-weight:600;line-height:1;}
+.ic-label{font-size:11px;color:rgba(255,255,255,0.5);text-transform:uppercase;letter-spacing:0.1em;margin-top:8px;}
+
+/* STRATEGY CTA */
+.strategy-cta{background:var(--dark2);padding:5rem 0;}
+.sc-inner{
+  max-width:700px;margin:0 auto;text-align:center;
+  background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);
+  border-radius:16px;padding:3.5rem;
+}
+.sc-inner h3{font-family:'Cormorant Garamond',serif;font-size:36px;color:#fff;font-weight:500;margin-bottom:1rem;}
+.sc-inner h3 em{color:var(--gold2);font-style:italic;}
+.sc-desc{font-size:15px;color:rgba(255,255,255,0.55);line-height:1.8;font-weight:300;margin-bottom:2.5rem;}
+.sc-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;}
+
+@media(max-width:900px){
+  .zelal-grid{grid-template-columns:1fr;}
+  .inf-grid{grid-template-columns:repeat(2,1fr);}
+  .impact-grid{grid-template-columns:repeat(2,1fr);}
+  .zelal-actions{grid-template-columns:1fr;}
+}
+@media(max-width:600px){
+  .inf-grid{grid-template-columns:1fr;}
+  .impact-grid{grid-template-columns:repeat(2,1fr);}
+}
+</style>
+</head>
+<body>
+
+<div id="loader">
+  <div class="loader-logo">Candy <em>Fruit</em></div>
+  <div class="loader-bar"><div class="loader-fill"></div></div>
+</div>
+
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">Candy <em>Fruit</em></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="pages/menu.html">Menu</a></li>
+      <li><a href="ambassadeurs.html" class="active">Ambassadeurs</a></li>
+      <li><a href="galerie.html">Galerie</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <a href="tel:+212522363644" class="btn btn-gold btn-sm nav-cta">Réserver</a>
+    <button class="nav-burger" id="navBurger"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html">Accueil</a>
+  <a href="pages/menu.html">Menu</a>
+  <a href="ambassadeurs.html">Ambassadeurs</a>
+  <a href="galerie.html">Galerie</a>
+  <a href="contact.html">Contact</a>
+</div>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="ph-bg"></div>
+  <div class="container ph-content">
+    <div class="sec-label reveal" style="color:rgba(255,255,255,0.5);">Partenariats & collaborations</div>
+    <h1 class="sec-title light reveal">Nos <em>Ambassadeurs</em></h1>
+    <p class="reveal" style="color:rgba(255,255,255,0.6);font-size:15px;font-weight:300;max-width:480px;line-height:1.8;">
+      Athlètes d'élite et influenceurs qui font confiance à Candy Fruit pour leur nutrition et leur style de vie.
+    </p>
+  </div>
+</div>
+
+<!-- YOUSSEF ZELAL -->
+<section class="zelal-section">
+  <div class="container">
+    <div class="zelal-grid">
+      <div class="zelal-visual reveal-left">
+        <div class="zelal-avatar">
+          <span><img src="image/im.jfif"style="height: 400px ;width: 450px; alt=""></span>
+          <div class="zelal-badge">⭐ Ambassadeur élite</div>
+        </div>
+        <div class="zelal-stats-float">
+          <div class="zsf-item"><span class="zsf-label">Niveau</span><span class="zsf-val">International</span></div>
+          <div class="zsf-item"><span class="zsf-label">Discipline</span><span class="zsf-val">Fond / Demi-fond</span></div>
+          <div class="zsf-item"><span class="zsf-label">Nationalité</span><span class="zsf-val">Marocain 🇲🇦</span></div>
+          <div class="zsf-item"><span class="zsf-label">Partenaire</span><span class="zsf-val" style="color:var(--green);">Candy Fruit</span></div>
+        </div>
+      </div>
+      <div class="zelal-content reveal-right">
+        <div class="sec-label" style="color:rgba(255,255,255,0.4);">Ambassadeur athlète n°1</div>
+        <h2 class="sec-title" style="color:#fff;">Youssef <em style="color:var(--gold2);font-style:italic;">Zelal</em></h2>
+        <p class="zelal-desc">Athlète marocain de haut niveau en fond et demi-fond international, Youssef Zelal a choisi Candy Fruit comme partenaire nutritionnel de confiance. Sa présence dans nos Highlights Instagram est une caution de qualité incomparable pour notre offre healthy.</p>
+        <div class="zelal-quote">
+          "Un athlète d'élite qui choisit un restaurant, c'est un choix de performance — pas de compromis."
+        </div>
+        <div class="insight-box">
+          <span class="ib-icon">💡</span>
+          <div>
+            <div class="ib-title">Actif stratégique sous-exploité</div>
+            <div class="ib-desc">La collaboration avec Youssef Zelal est visible dans les Highlights Instagram de Candy Fruit mais pas encore pleinement valorisée en communication. C'est un levier premium pouvant attirer un segment sportif et healthy à haute valeur ajoutée.</div>
+          </div>
+        </div>
+        <div class="zelal-actions">
+          <div class="za-card">
+            <div class="za-num">01</div>
+            <div class="za-title">Série "Nutrition d'athlète"</div>
+            <div class="za-desc">Reels vidéo : "Pourquoi Youssef choisit Candy Fruit" — 4 épisodes IG + TikTok</div>
+          </div>
+          <div class="za-card">
+            <div class="za-num">02</div>
+            <div class="za-title">Menu "Zelal Special"</div>
+            <div class="za-desc">Créer un jus co-signé avec l'athlète — mis en avant sur la carte et les réseaux</div>
+          </div>
+          <div class="za-card">
+            <div class="za-num">03</div>
+            <div class="za-title">Highlight dédié</div>
+            <div class="za-desc">Créer un Highlight "🏃 Sport & Santé" regroupant toutes les collabs athlètes</div>
+          </div>
+          <div class="za-card">
+            <div class="za-num">04</div>
+            <div class="za-title">Partenariat salles sport</div>
+            <div class="za-desc">Flyers "Récupération chez Candy Fruit" dans les 5 salles de sport les plus proches</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INFLUENCEURS -->
+<section class="influencers-section">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:1rem;">
+      <div class="sec-label reveal" style="justify-content:center;">Collaborations Instagram</div>
+      <h2 class="sec-title reveal" style="text-align:center;">Influenceurs <em>Casablanca</em></h2>
+      <p class="sec-desc reveal" style="margin:0 auto;text-align:center;max-width:520px;">Des partenariats organiques visibles dans les Highlights @candyfruit.officiel — une stratégie de bouche-à-oreille digitale active.</p>
+    </div>
+    <div class="inf-grid">
+      <div class="inf-card reveal">
+        <div class="inf-visual" style="background:linear-gradient(135deg,#f7971e,#ffd200);">
+          <span><img src="image/amb.jpeg" style="height: 200px ;width: 150px;"></span>
+          <span class="inf-type">Food blogger</span>
+        </div>
+        <div class="inf-body">
+          <div class="inf-name">Influenceur Food</div>
+          <div class="inf-role">Food blogger Casablanca · Lifestyle & cuisine</div>
+          <div class="inf-stats">
+            <div class="inf-stat"><div class="n">2.1M</div><div class="l">Followers</div></div>
+            <div class="inf-stat"><div class="n">Casa</div><div class="l">Zone cible</div></div>
+          </div>
+          <div class="inf-tags"><span class="inf-tag">🍕 Food</span><span class="inf-tag">📸 Lifestyle</span><span class="inf-tag">🏙️ Casablanca</span></div>
+        </div>
+      </div>
+      <div class="inf-card reveal">
+        <div class="inf-visual" style="background:linear-gradient(135deg,#11998e,#38ef7d);">
+          <span><img src="image/bjj.jpg"style="height: 200px ;width: 150px; alt=""></span>
+          <span class="inf-type">Fitness & Sport</span>
+        </div>
+        <div class="inf-body">
+          <div class="inf-name">Créateur Sport</div>
+          <div class="inf-role">Fitness & nutrition · Healthy lifestyle Maroc</div>
+          <div class="inf-stats">
+            <div class="inf-stat"><div class="n">5k–20k</div><div class="l">Followers</div></div>
+            <div class="inf-stat"><div class="n">Maroc</div><div class="l">Audience</div></div>
+          </div>
+          <div class="inf-tags"><span class="inf-tag">💪 Fitness</span><span class="inf-tag">🥗 Healthy</span><span class="inf-tag">🏋️ Sport</span></div>
+        </div>
+      </div>
+      <div class="inf-card reveal">
+        <div class="inf-visual" style="background:linear-gradient(135deg,#833ab4,#fd1d1d,#fcb045);">
+          <span><img src="image/in.png"style="height: 200px ;width: 150px; alt=""></span>
+          <span class="inf-type">Lifestyle</span>
+        </div>
+        <div class="inf-body">
+          <div class="inf-name">Lifestyle Creator</div>
+          <div class="inf-role">Mode & lifestyle · Communauté jeune Casa</div>
+          <div class="inf-stats">
+            <div class="inf-stat"><div class="n">15k+</div><div class="l">Followers</div></div>
+            <div class="inf-stat"><div class="n">18-30</div><div class="l">Audience</div></div>
+          </div>
+          <div class="inf-tags"><span class="inf-tag">✨ Mode</span><span class="inf-tag">🌆 Lifestyle</span><span class="inf-tag">📱 Reels</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- IMPACT -->
+<section class="impact-section">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:1rem;">
+      <div class="sec-label reveal" style="justify-content:center;color:rgba(255,255,255,0.4);">Résultats projetés</div>
+      <h2 class="sec-title light reveal" style="text-align:center;">Impact <em>estimé</em> à 3 mois</h2>
+    </div>
+    <div class="impact-grid">
+      <div class="impact-card reveal"><div class="ic-num" data-count="10000" data-suffix="">0</div><div class="ic-label">Followers Instagram</div></div>
+      <div class="impact-card reveal"><div class="ic-num">+30%</div><div class="ic-label">Notoriété locale</div></div>
+      <div class="impact-card reveal"><div class="ic-num">×5</div><div class="ic-label">Portée des Reels</div></div>
+      <div class="impact-card reveal"><div class="ic-num">+40%</div><div class="ic-label">Fréquentation</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- STRATEGY CTA -->
+<section class="strategy-cta">
+  <div class="container">
+    <div class="sc-inner reveal">
+      <h3>Amplifier ces <em>collaborations</em></h3>
+      <p class="sc-desc">Ces partenariats sont un actif précieux de Candy Fruit. Une stratégie de contenu dédiée peut multiplier leur impact par 5 en 3 mois — sans budget publicitaire majeur.</p>
+      <div class="sc-btns">
+        <a href="contact.html" class="btn btn-gold">Discuter de la stratégie</a>
+        <a href="pages/menu.html" class="btn btn-outline" style="color:#fff;border-color:rgba(255,255,255,0.3);">Voir le menu</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div><div class="f-logo">Candy <em>Fruit</em></div><p class="f-desc">Restaurant & Juicery · Av. TanTan, Casablanca 20250</p></div>
+      <div class="f-col"><h4>Pages</h4><ul>
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="pages/menu.html">Menu</a></li>
+        <li><a href="galerie.html">Galerie</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul></div>
+      <div class="f-col"><h4>Contact</h4><ul>
+        <li><a href="#">Av. TanTan, Casa 20250</a></li>
+        <li><a href="tel:0522363644">05 22 36 36 44</a></li>
+        <li><a href="#">www.candyfruit.ma</a></li>
+      </ul></div>
+      <div class="f-col"><h4>Réseaux</h4><ul>
+        <li><a href="#">@candyfruit.officiel</a></li>
+        <li><a href="#">Facebook · Candy Fruit</a></li>
+        <li><a href="#">Google Maps</a></li>
+      </ul></div>
+    </div>
+    <div class="f-bottom">
+      <div class="f-copy">© 2026 Candy Fruit · Casablanca</div>
+      <div class="f-social"><a href="#">📸</a><a href="#">👤</a><a href="#">🗺️</a></div>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
