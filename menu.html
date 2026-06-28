@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Menu — Candy Fruit Casablanca</title>
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/menu.css">
+</head>
+<body>
+
+<div id="loader">
+  <div class="loader-logo">Candy <em>Fruit</em></div>
+  <div class="loader-bar"><div class="loader-fill"></div></div>
+</div>
+
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">Candy <em>Fruit</em></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="menu.html" class="active">Menu</a></li>
+      <li><a href="ambassadeurs.html">Ambassadeurs</a></li>
+      <li><a href="galerie.html">Galerie</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <a href="tel:+212522363644" class="btn btn-gold btn-sm nav-cta">Réserver</a>
+    <button class="nav-burger" id="navBurger"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html">Accueil</a>
+  <a href="menu.html">Menu</a>
+  <a href="ambassadeurs.html">Ambassadeurs</a>
+  <a href="galerie.html">Galerie</a>
+  <a href="contact.html">Contact</a>
+</div>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="ph-bg"></div>
+  <div class="container ph-content">
+    <div class="sec-label" style="color:rgba(255,255,255,0.5);">Carte complète</div>
+    <h1 class="sec-title light">Notre <em>Menu</em></h1>
+    <p style="color:rgba(255,255,255,0.6);font-size:15px;font-weight:300;max-width:480px;line-height:1.8;">
+      Du jus vitaminé au filet de bœuf — 50+ plats, brunchs, pizzas artisanales, plats marocains et cocktails de fruits frais.
+    </p>
+  </div>
+</div>
+
+<!-- MENU SEARCH & CONTROLS -->
+<div class="menu-controls-bar">
+  <div class="container">
+    <div class="mc-inner">
+      <div class="mc-search">
+        <span class="mc-search-icon">🔍</span>
+        <input type="text" id="menuSearch" placeholder="Rechercher un plat, un ingrédient..." autocomplete="off">
+        <button class="mc-clear" id="searchClear" style="display:none;">✕</button>
+      </div>
+      <div class="mc-info">
+        <span class="mc-badge">Petit déjeuner dès 8 DH</span>
+        <span class="mc-badge">Brunchs dès 35 DH</span>
+        <span class="mc-badge gold">⭐ Signature Candy</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MENU TABS -->
+<div class="menu-tabs-wrapper">
+  <div class="container">
+    <div id="menuTabs" class="menu-tabs-scroll"></div>
+  </div>
+</div>
+
+<!-- MENU CONTENT -->
+<div class="menu-content-area section">
+  <div class="container">
+    <div id="menuContent" class="menu-content page-transition"></div>
+  </div>
+</div>
+
+<!-- DAILY SPECIALS SIDEBAR NOTE -->
+<div class="section-sm" style="background:var(--dark2);">
+  <div class="container">
+    <div class="daily-banner">
+      <div class="db-left">
+        <div class="sec-label" style="color:rgba(255,255,255,0.4);">Plats du jour</div>
+        <h3 style="font-family:'Cormorant Garamond',serif;font-size:28px;color:#fff;font-weight:500;">Spéciaux <em style="color:var(--gold2);font-style:italic;">chaque jour</em></h3>
+      </div>
+      <div class="db-days">
+        <div class="dbd-item"><span class="dbd-day">Mardi</span><span class="dbd-meal">Poulet Meslalla</span><span class="dbd-price">65 DH</span></div>
+        <div class="dbd-item"><span class="dbd-day">Mercredi</span><span class="dbd-meal">Rfissa + Thé</span><span class="dbd-price">66 DH</span></div>
+        <div class="dbd-item"><span class="dbd-day">Jeudi</span><span class="dbd-meal">Seffa Medfouna</span><span class="dbd-price">63 DH</span></div>
+        <div class="dbd-item"><span class="dbd-day">Vendredi</span><span class="dbd-meal">Couscous Viande/Poulet</span><span class="dbd-price">56 DH</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="f-logo">Candy <em>Fruit</em></div>
+        <p class="f-desc">Restaurant & Juicery · Av. TanTan, Casablanca 20250 · 05 22 36 36 44</p>
+      </div>
+      <div class="f-col"><h4>Menu</h4><ul>
+        <li><a href="#" onclick="switchTab('jus')">Jus de fruits</a></li>
+        <li><a href="#" onclick="switchTab('cocktails')">Cocktails</a></li>
+        <li><a href="#" onclick="switchTab('brunch')">Brunchs</a></li>
+        <li><a href="#" onclick="switchTab('pizzas')">Pizzas</a></li>
+      </ul></div>
+      <div class="f-col"><h4>Pages</h4><ul>
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="ambassadeurs.html">Ambassadeurs</a></li>
+        <li><a href="galerie.html">Galerie</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul></div>
+      <div class="f-col"><h4>Contact</h4><ul>
+        <li><a href="#">Av. TanTan, Casa 20250</a></li>
+        <li><a href="tel:0522363644">05 22 36 36 44</a></li>
+        <li><a href="#">www.candyfruit.ma</a></li>
+      </ul></div>
+    </div>
+    <div class="f-bottom">
+      <div class="f-copy">© 2026 Candy Fruit · Casablanca</div>
+      <div class="f-social"><a href="#">📸</a><a href="#">👤</a><a href="#">🗺️</a></div>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+<script src="js/menu.js"></script>
+<script>
+// Handle URL param ?cat=xxx
+document.addEventListener('DOMContentLoaded', () => {
+  const params = new URLSearchParams(window.location.search);
+  const cat = params.get('cat');
+  if (cat && document.querySelector(`[data-cat="${cat}"]`)) {
+    setTimeout(() => {
+      const btn = document.querySelector(`[data-cat="${cat}"]`);
+      if (btn) btn.click();
+    }, 300);
+  }
+
+  // Search clear button
+  const search = document.getElementById('menuSearch');
+  const clear = document.getElementById('searchClear');
+  if (search && clear) {
+    search.addEventListener('input', () => {
+      clear.style.display = search.value ? 'block' : 'none';
+    });
+    clear.addEventListener('click', () => {
+      search.value = '';
+      search.dispatchEvent(new Event('input'));
+      clear.style.display = 'none';
+    });
+  }
+});
+
+function switchTab(cat) {
+  const btn = document.querySelector(`[data-cat="${cat}"]`);
+  if (btn) { btn.click(); window.scrollTo({top:300,behavior:'smooth'}); }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — Candy Fruit Casablanca</title>
+<link rel="stylesheet" href="css/style.css">
+<style>
+.page-hero{min-height:280px;background:linear-gradient(160deg,#0f2218,#2c5f3a);display:flex;align-items:flex-end;position:relative;overflow:hidden;}
+.ph-bg{position:absolute;inset:0;background:radial-gradient(ellipse at 80% 50%,rgba(184,137,42,0.1) 0%,transparent 60%);}
+.ph-content{position:relative;z-index:2;padding:5rem 0 3rem;}
+
+/* CONTACT LAYOUT */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;}
+
+/* INFO CARDS */
+.info-cards{display:flex;flex-direction:column;gap:1rem;}
+.info-card{
+  background:#fff;border-radius:12px;border:1px solid var(--border);
+  padding:1.5rem;display:flex;align-items:flex-start;gap:1rem;
+  transition:transform 0.2s,box-shadow 0.2s;
+}
+.info-card:hover{transform:translateX(4px);box-shadow:var(--shadow);}
+.ic-icon{
+  width:46px;height:46px;border-radius:10px;
+  display:flex;align-items:center;justify-content:center;font-size:20px;
+  flex-shrink:0;
+}
+.ic-green{background:var(--green3);}
+.ic-gold{background:var(--gold3);}
+.ic-dark{background:var(--dark2);}
+.ic-label{font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);margin-bottom:4px;}
+.ic-val{font-size:15px;font-weight:500;color:var(--dark);}
+.ic-sub{font-size:12px;color:var(--muted);font-weight:300;margin-top:2px;}
+
+/* MAP PLACEHOLDER */
+.map-wrap{
+  border-radius:16px;overflow:hidden;
+  background:linear-gradient(135deg,#1a3d25,#2c5f3a);
+  height:240px;display:flex;align-items:center;justify-content:center;
+  position:relative;margin-top:1.5rem;
+}
+.map-pin{font-size:48px;animation:mapBounce 1.5s infinite;}
+@keyframes mapBounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+.map-label{position:absolute;bottom:1rem;left:50%;transform:translateX(-50%);background:rgba(0,0,0,0.7);color:#fff;font-size:12px;padding:6px 16px;border-radius:20px;white-space:nowrap;}
+.map-link{display:inline-flex;align-items:center;gap:8px;background:var(--gold);color:#fff;padding:10px 20px;border-radius:8px;font-size:13px;font-weight:500;margin-top:1rem;transition:background 0.2s;}
+.map-link:hover{background:var(--gold2);}
+
+/* FORM */
+.contact-form-wrap{background:#fff;border-radius:16px;border:1px solid var(--border);padding:2.5rem;box-shadow:var(--shadow);}
+.cf-title{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:500;color:var(--dark);margin-bottom:0.5rem;}
+.cf-sub{font-size:13px;color:var(--muted);font-weight:300;margin-bottom:2rem;}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;}
+.form-group{margin-bottom:1rem;}
+.form-group label{display:block;font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);margin-bottom:6px;}
+.form-group input,.form-group select,.form-group textarea{
+  width:100%;border:1px solid var(--border);border-radius:8px;
+  padding:12px 14px;font-family:'Outfit',sans-serif;font-size:14px;
+  color:var(--text);background:var(--cream);outline:none;transition:border-color 0.2s;
+}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--green);background:#fff;}
+.form-group textarea{resize:vertical;min-height:120px;}
+.form-submit{width:100%;padding:14px;background:var(--green);color:#fff;border:none;border-radius:8px;font-family:'Outfit',sans-serif;font-size:14px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;cursor:pointer;transition:background 0.2s,transform 0.2s;}
+.form-submit:hover{background:var(--green2);transform:translateY(-1px);}
+.form-success{display:none;text-align:center;padding:2rem;color:var(--green);}
+.form-success .fs-icon{font-size:48px;margin-bottom:1rem;}
+.form-success h4{font-size:20px;font-weight:600;margin-bottom:0.5rem;}
+.form-success p{font-size:13px;color:var(--muted);}
+
+/* HOURS */
+.hours-section{background:var(--dark2);padding:5rem 0;}
+.hours-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:1rem;margin-top:2.5rem;}
+.hour-card{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.07);border-radius:10px;padding:1.25rem;text-align:center;}
+.hour-card.today{background:rgba(184,137,42,0.12);border-color:rgba(184,137,42,0.3);}
+.hc-day{font-size:10px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--gold2);margin-bottom:6px;}
+.hc-time{font-size:13px;color:rgba(255,255,255,0.75);font-weight:400;}
+.hc-special{font-size:11px;color:rgba(255,255,255,0.4);margin-top:4px;font-weight:300;}
+
+@media(max-width:900px){
+  .contact-grid{grid-template-columns:1fr;}
+  .form-row{grid-template-columns:1fr;}
+  .hours-grid{grid-template-columns:repeat(4,1fr);}
+}
+@media(max-width:600px){
+  .hours-grid{grid-template-columns:repeat(2,1fr);}
+}
+</style>
+</head>
+<body>
+
+<div id="loader"><div class="loader-logo">Candy <em>Fruit</em></div><div class="loader-bar"><div class="loader-fill"></div></div></div>
+
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">Candy <em>Fruit</em></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="pages/menu.html">Menu</a></li>
+      <li><a href="ambassadeurs.html">Ambassadeurs</a></li>
+      <li><a href="galerie.html">Galerie</a></li>
+      <li><a href="contact.html" class="active">Contact</a></li>
+    </ul>
+    <a href="tel:+212522363644" class="btn btn-gold btn-sm nav-cta">Réserver</a>
+    <button class="nav-burger" id="navBurger"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html">Accueil</a><a href="pages/menu.html">Menu</a>
+  <a href="ambassadeurs.html">Ambassadeurs</a><a href="galerie.html">Galerie</a><a href="contact.html">Contact</a>
+</div>
+
+<div class="page-hero">
+  <div class="ph-bg"></div>
+  <div class="container ph-content">
+    <div class="sec-label reveal" style="color:rgba(255,255,255,0.5);">Venez nous voir</div>
+    <h1 class="sec-title light reveal">Nous <em>contacter</em></h1>
+  </div>
+</div>
+
+<!-- CONTACT SECTION -->
+<section class="section">
+  <div class="container">
+    <div class="contact-grid">
+
+      <!-- LEFT: INFO -->
+      <div>
+        <div class="sec-label reveal">Informations</div>
+        <h2 class="sec-title reveal">Trouvez-<em>nous</em></h2>
+        <p class="sec-desc reveal">Candy Fruit vous accueille du matin au soir, 7j/7, au cœur de Casablanca.</p>
+        <div class="info-cards">
+          <div class="info-card reveal">
+            <div class="ic-icon ic-green">📍</div>
+            <div><div class="ic-label">Adresse</div><div class="ic-val">Av. TanTan, Casablanca 20250</div><div class="ic-sub">Parking gratuit disponible</div></div>
+          </div>
+          <div class="info-card reveal">
+            <div class="ic-icon ic-gold">📞</div>
+            <div><div class="ic-label">Téléphone</div><div class="ic-val">05 22 36 36 44</div><div class="ic-sub">Lun–Dim : 8h00 – 22h00</div></div>
+          </div>
+          <div class="info-card reveal">
+            <div class="ic-icon ic-green">✉️</div>
+            <div><div class="ic-label">Email</div><div class="ic-val">candy.fruit009@gmail.com</div><div class="ic-sub">Réponse sous 24h</div></div>
+          </div>
+          <div class="info-card reveal">
+            <div class="ic-icon ic-dark" style="background:linear-gradient(135deg,#833ab4,#fd1d1d);">📸</div>
+            <div><div class="ic-label">Instagram</div><div class="ic-val">@candyfruit.officiel</div><div class="ic-sub">3 070 followers · Highlights actifs</div></div>
+          </div>
+          <div class="info-card reveal">
+            <div class="ic-icon ic-gold">🌐</div>
+            <div><div class="ic-label">Site web</div><div class="ic-val">www.candyfruit.ma</div><div class="ic-sub">Menu en ligne · Réservation</div></div>
+          </div>
+        </div>
+        <div class="map-wrap reveal">
+          <span class="map-pin">📍</span>
+          <div class="map-label">Candy Fruit · Av. TanTan, Casablanca</div>
+        </div>
+        <a href="https://maps.google.com" class="map-link reveal">🗺️ Ouvrir dans Google Maps</a>
+      </div>
+
+      <!-- RIGHT: FORM -->
+      <div class="contact-form-wrap reveal-right">
+        <div class="cf-title">Réservez votre <em style="color:var(--gold);font-style:italic;">table</em></div>
+        <div class="cf-sub">Ou posez-nous vos questions — nous répondons sous 24h.</div>
+        <form id="contactForm">
+          <div class="form-row">
+            <div class="form-group"><label>Prénom *</label><input type="text" placeholder="Youssef" required></div>
+            <div class="form-group"><label>Nom *</label><input type="text" placeholder="El Amrani" required></div>
+          </div>
+          <div class="form-group"><label>Email *</label><input type="email" placeholder="vous@email.com" required></div>
+          <div class="form-group"><label>Téléphone</label><input type="tel" placeholder="06 XX XX XX XX"></div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Date souhaitée</label>
+              <input type="date" id="reservDate">
+            </div>
+            <div class="form-group">
+              <label>Nombre de personnes</label>
+              <select>
+                <option>1 personne</option>
+                <option selected>2 personnes</option>
+                <option>3-4 personnes</option>
+                <option>5-6 personnes</option>
+                <option>7+ personnes</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Objet</label>
+            <select>
+              <option>Réservation table</option>
+              <option>Événement privé</option>
+              <option>Commande à emporter</option>
+              <option>Partenariat / Collaboration</option>
+              <option>Question générale</option>
+            </select>
+          </div>
+          <div class="form-group"><label>Message</label><textarea placeholder="Dites-nous en plus..."></textarea></div>
+          <button type="submit" class="form-submit">Envoyer le message ↗</button>
+        </form>
+        <div class="form-success" id="formSuccess">
+          <div class="fs-icon">✅</div>
+          <h4>Message envoyé !</h4>
+          <p>Nous vous répondrons dans les 24 heures. À très bientôt chez Candy Fruit !</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOURS -->
+<section class="hours-section">
+  <div class="container">
+    <div style="text-align:center;">
+      <div class="sec-label reveal" style="justify-content:center;color:rgba(255,255,255,0.4);">Horaires</div>
+      <h2 class="sec-title light reveal" style="text-align:center;">Ouvert <em>7j/7</em></h2>
+    </div>
+    <div class="hours-grid" id="hoursGrid"></div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div><div class="f-logo">Candy <em>Fruit</em></div><p class="f-desc">Restaurant & Juicery · Av. TanTan, Casablanca 20250 · 05 22 36 36 44</p></div>
+      <div class="f-col"><h4>Pages</h4><ul><li><a href="index.html">Accueil</a></li><li><a href="pages/menu.html">Menu</a></li><li><a href="ambassadeurs.html">Ambassadeurs</a></li><li><a href="galerie.html">Galerie</a></li></ul></div>
+      <div class="f-col"><h4>Contact</h4><ul><li><a href="#">Av. TanTan, Casa 20250</a></li><li><a href="tel:0522363644">05 22 36 36 44</a></li><li><a href="#">candy.fruit009@gmail.com</a></li></ul></div>
+      <div class="f-col"><h4>Réseaux</h4><ul><li><a href="#">@candyfruit.officiel</a></li><li><a href="#">Facebook · Candy Fruit</a></li><li><a href="#">Google Maps</a></li></ul></div>
+    </div>
+    <div class="f-bottom"><div class="f-copy">© 2026 Candy Fruit · Casablanca · Tous droits réservés</div><div class="f-social"><a href="#">📸</a><a href="#">👤</a><a href="#">🗺️</a></div></div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+<script>
+// Set min date to today
+document.getElementById('reservDate').min = new Date().toISOString().split('T')[0];
+
+// Form submit
+document.getElementById('contactForm').addEventListener('submit', e => {
+  e.preventDefault();
+  const btn = e.target.querySelector('.form-submit');
+  btn.textContent = 'Envoi en cours...';
+  btn.disabled = true;
+  setTimeout(() => {
+    document.getElementById('contactForm').style.display = 'none';
+    document.getElementById('formSuccess').style.display = 'block';
+  }, 1500);
+});
+
+// Hours grid
+const days = [
+  {day:'Lundi',time:'8h00–22h00',special:''},
+  {day:'Mardi',time:'8h00–22h00',special:'Poulet Meslalla'},
+  {day:'Mercredi',time:'8h00–22h00',special:'Rfissa + Thé'},
+  {day:'Jeudi',time:'8h00–22h00',special:'Seffa Medfouna'},
+  {day:'Vendredi',time:'8h00–23h00',special:'Couscous'},
+  {day:'Samedi',time:'8h00–23h00',special:'Brunch Candy'},
+  {day:'Dimanche',time:'9h00–22h00',special:'Brunch spécial'},
+];
+const todayIdx = new Date().getDay() === 0 ? 6 : new Date().getDay() - 1;
+document.getElementById('hoursGrid').innerHTML = days.map((d,i) => `
+  <div class="hour-card${i===todayIdx?' today':''}">
+    <div class="hc-day">${d.day}${i===todayIdx?' 📍':''}</div>
+    <div class="hc-time">${d.time}</div>
+    ${d.special?`<div class="hc-special">🍽️ ${d.special}</div>`:''}
+  </div>
+`).join('');
+</script>
+</body>
+</html>
